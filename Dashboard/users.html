@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><span class="logo">Dashboard</span></div>
+  <nav class="links">
+    <a href="index.html">Dashboard</a>
+    <a href="users.html">Users</a>
+    <a href="posts.html">Posts</a>
+  </nav>
+  <div class="controls">
+    <button id="themeToggle" class="icon-btn" title="Toggle theme"><i class="fas fa-moon"></i></button>
+  </div>
+</header>
+
+<div id="loader" class="loader hidden"><div class="spinner"></div></div>
+
+<main class="container animate__animated animate__fadeInUp">
+  <div class="page-head">
+    <h1>Users</h1>
+    <p class="muted">View, edit, delete & favourite users.</p>
+    <div class="actions">
+      <button id="refreshUsers" class="btn"><i class="fas fa-sync-alt"></i> Refresh</button>
+      <button id="addUserBtn" class="btn primary"><i class="fas fa-user-plus"></i> Add User</button>
+    </div>
+  </div>
+
+  <table id="usersTable" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>Fav</th><th>ID</th><th>Name</th><th>Username</th><th>Email</th><th>Company</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Modal: user form -->
+  <div id="userModal" class="modal hidden">
+    <div class="modal-card animate__animated animate__zoomIn">
+      <h3 id="userModalTitle">Edit User</h3>
+      <form id="userForm">
+        <input type="hidden" id="u_id" />
+        <label>Name <input id="u_name" required /></label>
+        <label>Username <input id="u_username" required /></label>
+        <label>Email <input id="u_email" type="email" required /></label>
+        <label>Company <input id="u_company" /></label>
+        <div class="modal-actions">
+          <button type="submit" class="btn primary"><i class="fas fa-save"></i> Save</button>
+          <button type="button" id="userCancel" class="btn ghost">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/users.js"></script>
+</body>
+</html>

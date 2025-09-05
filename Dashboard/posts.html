@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<header class="nav">
+  <div class="brand"><span class="logo">Dashboard</span></div>
+  <nav class="links">
+    <a href="index.html">Dashboard</a>
+    <a href="users.html">Users</a>
+    <a href="posts.html">Posts</a>
+  </nav>
+  <div class="controls">
+    <button id="themeToggle" class="icon-btn" title="Toggle theme"><i class="fas fa-moon"></i></button>
+  </div>
+</header>
+
+<div id="loader" class="loader hidden"><div class="spinner"></div></div>
+
+<main class="container animate__animated animate__fadeInUp">
+  <div class="page-head">
+    <h1>Posts</h1>
+    <p class="muted">Search, add, edit, delete, and view comments.</p>
+    <div class="actions">
+      <input id="postSearch" placeholder="Search posts..." />
+      <button id="addPostBtn" class="btn primary"><i class="fas fa-plus"></i> Add Post</button>
+    </div>
+  </div>
+
+  <table id="postsTable" class="display" style="width:100%">
+    <thead>
+      <tr>
+        <th>ID</th><th>Title</th><th>Body</th><th>User</th><th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Post Modal -->
+  <div id="postModal" class="modal hidden">
+    <div class="modal-card animate__animated animate__zoomIn">
+      <h3 id="postModalTitle">Add Post</h3>
+      <form id="postForm">
+        <input type="hidden" id="p_id" />
+        <label>Title <input id="p_title" required /></label>
+        <label>Body <textarea id="p_body" rows="5" required></textarea></label>
+        <div class="modal-actions">
+          <button type="submit" class="btn primary"><i class="fas fa-save"></i> Save</button>
+          <button type="button" id="postCancel" class="btn ghost">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Comments Modal -->
+  <div id="commentsModal" class="modal hidden">
+    <div class="modal-card animate__animated animate__fadeInUp">
+      <h3>Comments for post <span id="commentsPostId"></span></h3>
+      <div id="commentsList" class="comments-list"></div>
+      <div class="modal-actions">
+        <button id="closeComments" class="btn">Close</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/posts.js"></script>
+</body>
+</html>
